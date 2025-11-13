@@ -30,14 +30,26 @@ public class Anagram {
 	public static boolean isAnagram(String str1, String str2) {
 		str1 = preProcess(str1);
 		str2 = preProcess(str2);
+		String newStr1 = "";
+		String newStr2 = "";
+		for(int i = 0; i < str1.length(); i ++){
+			if (((str1.charAt(i) >= 97) && (str1.charAt(i) <= 122))){
+				newStr1 = newStr1+ str1.charAt(i);
+			}
+		}
+		for(int j = 0; j < str2.length(); j ++){
+			if (((str2.charAt(j) >= 97) && (str2.charAt(j) <= 122))){
+				newStr2 = newStr2+ str2.charAt(j);
+			}
+		}
 		int sum = 0;
-		for(int i = 0; i < str1.length(); i++){
-			char check = str1.charAt(i);
+		for(int l = 0; l < str1.length(); l++){
+			char check = str1.charAt(l);
 			boolean found = false;
-			for(int j = 0; j < str2.length(); j++){
-				if (str2.charAt(j) == check) {
+			for(int k = 0; k < str2.length(); k++){
+				if (str2.charAt(k) == check) {
 					sum++;
-					str2 = str2.substring(0, j) + str2.substring(j + 1);
+					str2 = str2.substring(0, k) + str2.substring(k + 1);
 					found = true;
 					break;
 				}
@@ -54,7 +66,7 @@ public class Anagram {
 		str = str.toLowerCase();
 		String newStr = "";
 		for(int i = 0; i < str.length(); i ++){
-			if((str.charAt(i) >= 97) && (str.charAt(i) <= 122)){
+			if (((str.charAt(i) >= 97) && (str.charAt(i) <= 122)) || (str.charAt(i) == ' ')){
 				newStr = newStr + str.charAt(i);
 			}
 		}
